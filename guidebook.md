@@ -1,460 +1,486 @@
-# Guidebook Template
+# Prerequisites
 
-## Goal
+In order to complete this lab, you must obtain a subscription key for the Microsoft Text Analytics API.
 
-<!-- Replace this section with the goals of your lab/workship -->
+Sign up for a free trial key here: [https://azure.microsoft.com/en-us/try/cognitive-services/?api=text-analytics](https://azure.microsoft.com/en-us/try/cognitive-services/?api=text-analytics)
 
-This document provides you with technical information and best practices to produce a Knowledge Lab or CreatorCon workshop guidebook consistent with current standards. The standards documented here must be applied to all guidebooks created or updated from the time you receive this template. In other words, you are not required to apply these to previous guidebooks unless that content is being updated for an upcoming event.
+Once you have the key, keep it handy - you’ll need it throughout this lab.
 
-ServiceNow uses GitHub to store/version guidebooks and render them in HTML. For instructions on setting up VS Code and git to author your guidebook, see our [Setup Guide](https://github.com/ServiceNowEvents/Guidebook-Tools-Setup-Guide/blob/master/guidebook.md).  If you are unfamiliar with the basics of Markdown, see [Mastering Markdown](https://guides.github.com/features/mastering-markdown/) for an introduction to standard formatting.
+# Lab Overview
 
-Beyond standard Markdown, we have a few conventions you need to follow for your guidebook to render properly. This document covers the following topics: file directory structure, headings/sections, lists, images, writing style, and grammar & clarity.
+IntegrationHub gives developers, admins and business process owners a centralized place to build and manage integrations. “Content” in IntegrationHub is made up of a series of “Spokes”. Spokes are self-contained scoped applications that contain all of the artifacts that make up an integration, primarily “Actions”.
 
-Example of finished lab guide on developer.servicenow.com:
+This lab guide will walk you through the process of creating your first Spoke and will focus on the most common tasks required to build a Spoke from start to finish.
 
-![Demo lab guide](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-11-25-09-29-40.png)
+# Create a Scoped Application
 
-<!--
-    1. Create your lab guide starting here.
+Spokes are just Scoped Applications. It’s really that simple. Also, try saying “A Spoke is a Scope” ten times fast ...
 
-    2. Use the instructions below as a template
-       to format your guidebook.
+The first task when building a new Spoke is to create a Scoped Application.
 
-    3. When you are done writing your guidebook,
-       remove the template instructions.     
--->
+## Naming your Spoke
 
-# File Directory Structure
+When choosing a name for your Spoke, you should keep a few things in mind.
 
-## Creating your local repository
+1. The name you give the Spoke (application) will show up in the Action explorer in Flow Designer.
+1. To make it easier to distinguish Spoke apps from other apps, add “Spoke” to the end of the application name. When the Spoke is rendered in the Flow Designer UI, the word “Spoke” will be removed.
 
-1. On your local machine, create a GitHub folder in an appropriate place (e.g. Users> Your Home> Documents).
+    **Application Record**:
+    ![Alt Text](images/./images/001_create_application.png)
 
-1. Locate the **Clone or download** (green) dropdown in the GitHub repository created for you and copy the URL.
+    **Flow Designer UI**:
+    ![Alt Text](images/./images/002_flow_designer_new_spoke.png)
 
-    ![GitHub clone](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-10-09-56-55.png)
+## Create the Spoke
 
-1. Open a command or terminal window on your local machine and clone the repistory with a command similar to this:
+1. Navigate to **System Applications \> Studio**.
 
-        git clone (pasted URL)
+    ![Alt Text](images/003_nav_to_studio.png)
 
-1. You can now edit the files locally and push them to GitHub as needed.
+1. Click the **Create Application** button.
+1. Click the **Create** button next to the “Start from Scratch” option.
 
-## Files and folders
+    ![Alt Text](images/004_start_from_scratch.png)
+1. Fill out the “Create Application” form with the following values:
 
-1. Your workshop/lab guide must be named **guidebook.md**.
+    **Name**: Microsoft Text Analytics Spoke
+    **Scope**: x\_snc\_ms\_txt\_spoke
+    ![Alt Text](images/005_new_app_form.png)
+1. Click the **Create** button.
+1. Confirm that you wish to create the application in the resulting dialog.
+1. Click the **Back to list** button.
+1. Click the **Microsoft Text Analytics Spoke** entry to open the new application in Studio.
+    ![Alt Text](images/006_pick_application.png)
 
-1. Place images in a folder named **images** (all lower case) and reference them with a relative pathname in your Markdown reference.
+## Set the Spoke Icon
 
-        ![alt-text](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-10-11-47.png)
+When building a Spoke, you can set an icon associated with the application. This will be rendered in the Flow Designer UI. For this lab exercise, you are responsible for finding the image of your choosing.
 
-    > Note that this document makes use of absolute URLs to the images because they do not get copied with the template. As a general practice, use relative URLs in your guidebook (see images below).
+1. Using Google Images or a similar service, find the icon you wish to use.
+2. In Studio, click **File \> Settings**.
+    ![Alt Text](images/007_file_settings.png)
+3. Click the **Click to add…** link next to the Logo field.
+    ![Alt Text](images/008_click_to_add_logo.png)
+4. Click the **Browse…** button and navigate to the image you chose.
+    ![Alt Text](images/009_browse_choose_image_file.png)
+5. Click the **OK** button. The image you chose will now be shown.
+    ![Alt Text](images/010_image_has_been_chosen.png)
 
-1. Create an optional **files** folder for any files students need to download for the course, such as images, JavaScript, or csv files to import. The *files* directory name is lowercase.
+# Create your first Action
 
-        Download the [Sample data](files/sample_data.xlsx)
-	
-    > Note that file names with spaces will break the publishing process.  Replace spaces with underscores for file and image links.
+Now that you have a scoped app to work with, it’s time to create your first Action. All of the actions you create in this lab will be created **in** the Scope you created.
 
-1. Create an **other** folder for any additional files such as PowerPoints used to create complex diagrams, or presenter notes. These are not generally linked from the lab guide nor available to the students.
+## Launch Flow Designer
 
-![Sample files and folders](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-10-10-24-28.png)
+To launch Flow Designer, navigate to **Flow Designer > Designer**.
 
-# Headings/Sections
+![Alt Text](images/011_launch_flow_designer.png)
 
-## Available headings
+This opens a new UI where you will manage and build Actions, Flows and Subflows.
 
-You can use the following headings in your guidebook.
+!Alt Text[](012_flow_designer_ui.png)
 
-| Markdown tag | Heading level |
-|----|----|
-| # | Heading 1 |
-| ## | Heading 2 |
-| ### | Heading 3 |
+## Create the Action
 
-> **No other headings are allowed.**
+1. Click the **+ New** button, and then click **New Action** in the resulting menu.
 
-## H1 & H2 relationship
+    ![Alt Text](images/013_new_action.png)
 
-Always follow your H1 lab title immediately with an H2 section title.  This is a convention allows the import process automatically generate the table of contents and navigation (see the example figure at the top).
+2. Fill out the Action Properties form.
 
-Use Heading 1/H1 _only_ for section titles.  All content under H1 will render as a single page when digital guidebooks are published.
+    **Name:** Get Sentiment Score
+    **Application:** Microsoft Text Analytics Spoke
+    **Description:** Enter a description - simple HTML tags are also supported
 
-Example (partial):
+    ![Alt Text](images/014_action_description.png)
 
-    # Introduction
+3. Click the **Submit** button and you will be taken to the new/empty Action.
 
-    ## Goal
+    ![Alt Text](images/015_new_empty_action.png)
 
-    Convert an existing expense report process from spreadsheets to a bespoke application in ServiceNow. You'll leave this lab all without writing a single piece of code!
+## Add a Log step
 
-renders this index:
+Actions are made up of a series of steps. You will now add a simple Log step to the action for testing purposes. We’ll add real integration logic to this Action in upcoming exercises.
 
-![](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-11-26-14-00-30.png)
+1. Click the **Add a new step** button (+).
+    ![Alt Text](images/016_add_new_step.png)
+2. A new dialog will open with a list of available action steps. Click the **Log** step to add it to the Action.
+    ![Alt Text](images/017_select_log_step.png)
+3. Leave the **Log Level** at “info” and set the **Log Message** field to “Hello, World!”.
+    ![Alt Text](images/018_log_step_hello_world.png)
+4. Click the **Save** button on the Action. **Do not** click the Publish button yet. We’ll get to that in a bit.
 
-and each heading 1 renders a section this:
+# Create a Test Flow
 
- ![](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-11-26-14-01-46.png)
+Now that you have an Action, you need a Flow to test it.
 
-## Sections
+1. Click the **+ New** button, and then click **New Flow** in the resulting menu.
+    ![Alt Text](images/019_create_new_flow.png)
+2. Name the Flow “Test Flow” and click the **Submit** button.
+    ![Alt Text](images/020_new_flow_form.png)
 
-Within each Heading 1/H1 section of your lab guide, use H2 to separate the different topics or exercises.
+## Add a Trigger
 
-    ## Create User Accounts
+Flows run when a Trigger condition is met. For this test, we will run a flow any time an Incident [incident] record is created or updated.
 
-    In this section you will create users for the upcoming exercises.
+1. Click the **Click to add a trigger** button.
+    ![Alt Text](images/021_click_to_add_trigger.png)
+2. Under the **Record** section, click **Created or Updated**.
+    ![Alt Text](images/022_select_created_or_updated_trigger.png)
+3. Set **Table** to “Incident [incident]”. and **Run Trigger** to “Always”.
+    ![Alt Text](images/023_configure_trigger.png)
 
-    1. Navigate to **User Administration > Users**.
+### Enable Draft Actions
 
-    1. Click **New** at the top of the list.
+By default, only **Published** actions will show up in Flow Designer. Remember when we **didn’t** press the Publish button on the Action? When testing unpublished Actions, you must first enable the option to show draft actions.
 
-## Allowing Attendees to Catch Up
+1. Click the **More Actions** button and click **Configurations**.
+    ![Alt Text](images/024_select_more_actions_configurations.png)
+2. Turn on the **Show draft actions** toggle.
+    ![Alt Text](images/025_click_show_draft_actions.png)
+3. Close the **Configurations** dialog.
 
-If your lab/workshop has exercises that depend upon each other, use ServiceNow's source control integration in Studio to allow the attendee to catch up rather than hitting a dead-end.
+### Add the Action to the Flow
 
-1. As you build your lab exercises (and guidebook), create a branch in source control as you complete each exercise. For example, create a branch "Exercise 1", with the completed first exercise. When an attendee switches to that branch, they can begin the second exercise with the first one completely done.
+Now it’s time to add your action to the test flow.
 
-    > **Important!** Don't forget demo data!
+1. Click the **Click to add an Action, Flow Logic, or Subflow** link.
 
-1. Include the GitHub Companion update set in your CloudLabs ICE Package.
+    ![Alt Text](images/026_click_to_add_action.png)
 
-1. Provide instructions at the end of each exercise to allow any attendees who did not successfully complete the lab the ability to use GitHub companion to switch branches and continue learning.
+2. Click the **Action** button.
+3. Click the **Microsoft Text Analytics** Spoke.
+4. Click the **Get Sentiment Score** Action.
+    ![Alt Text](images/027_select_sentiment_score_action.png)
+5. The Action is now part of the Flow.
+    ![Alt Text](images/028_sentiment_score_action_on_flow.png)
 
-# Lists
+### Test the Flow
 
-* While Markdown supports nesting ordered and un-ordered lists, please avoid using nested lists in your guide book.  This is to avoid conflicts with how we style (or rather, do not) nested lists on the Developer Portal.
+1. To test the flow, click the **Test** button.
+    ![Alt Text](images/029_click_test_button.png)
+2. A Dialog will open. Select any Incident record and click the **Run Test** button.
+    ![Alt Text](images/030_configure_test.png)
+3. Click the **Flow has been executed. To view the flow, click here** link.
+    ![Alt Text](images/031_flow_has_been_exec_link.png)
+4. This will open the Execution Details for the test run.
+    ![Alt Text](images/032_execution_details.png)
+5. Click the **Get Sentiment Score** action to expand details about the execution of that action. Click the **Logs** and **Steps** sections to expand them. Note that the Logs section will show all logs generated by the action. The Steps section will show the list of steps executed inside of the action, and the step configuration details such as design time and run time values.
+    ![Alt Text](images/033_execution_details_expanded.png)
 
-    1. Use numbered lists for task steps. All of these steps start with *1.*
+# Define Action Inputs
 
-    1. You do not have to manually number each step.
+Action Inputs allow you (and users of Flow Designer) to pass data into your actions. You can think of inputs as method parameters. This section will walk you through the process of creating Action Inputs for the **Get Sentiment Score** action.
 
-        But sometimes you need paragraphs between steps.  In those cases, indent your paragraphs with a tab.
+## Input Naming Considerations
 
-        Multiple paragraphs are OK too.
+Action inputs should always have human-friendly names.
 
-    1. And markdown will pick up numbering where you left off.
+**GOOD**: First name
+**BAD**: first\_name
 
-    1. Place a blank line between ordered and unordered lists for clarity. 
+**GOOD**: Table Name
+**BAD**: tableName
 
-* Indent supporting images and text to allow numbered lists to continue
+## Add the Input
 
-# Images
+1. Click the **Inputs** section at the top of the **Action Outline**.
+    ![Alt Text](images/034_select_inputs.png)
+2. Click the **Create Input** button.
+    ![Alt Text](images/035_create_input_button.png)
+3. Click the “variable” label and change the value to “Text”. Turn the **Mandatory** toggle on.
+    ![Alt Text](images/036_input_label.png)
+4. Note that there is now a “Text” pill in the **Input Variables** section of the Data pane.
+    ![Alt Text](images/037_input_in_data_pane.png)
+5. **Save** the Action.
 
-## General Image Information
+## Change the Log step to use the input
 
-This is the general form of an image tag in Markdown with alt text in [] and the URL to the image. The URL can be absolute or relative. We recommend using relative images for the guidebook (as they may be re-used for other events over the course of the year).
+Now that the action has an input, you will change the Log step to use the value from this input.
 
-    ![Absolute](https://www.servicenow.com/content/dam/servicenow-assets/images/meganav/servicenow-header-logo.svg)
+1. Open the step named **Log step**.
+2. Add a space after the existing log message, and then *drag* the **Text** input to the end of the **Log Message** input.
+    ![Alt Text](images/038_build_log_message.png)
+3. **Save** the action.
+4. Open the **Test Flow** flow you created earlier.
+5. Expand the **Get Sentiment** action and add a value to the new Text input.
+    ![Alt Text](images/039_set_get_sentiment_inputs.png)
+6. Test the flow again using the steps described earlier, and you will now see the “Text” value in the log message.
 
-    ![Relative](images/2018-now-logo.png)
+# The REST Step
 
-* Inline images must be smaller than 100 pixels wide.
+In this exercise, we will use the REST step. The REST step is exclusive to IntegrationHub, and is only available after activating the IntegrationHub Installer plugin. This is already active in your lab instance.
 
-* All images MUST have alternate text defined for accessibility compliance.  This is the part of the image markdown in the square brackets.  This text should describe the image in a way that allows a screen reader to provide context to someone who cannot see the image.
-	
-* DO NOT use a screenshot as a replacement for text as this is not usable for people with accessibility requirements.
+## Add a REST Step to the Action
 
-    For example, do not say “configure the record as shown \<insert screenshot\>”.  You can have a screenshot showing the configured record but you must also have text outside of the screenshot to explain what to do.
+1. Click the + button underneath the Log step you added earlier.
+    ![Alt Text](images/040_add_rest_step.png)
+2. Click the REST step in the **Integrations** section of the dialog.
+    ![Alt Text](images/041_select_rest_step.png)
+3. You will be presented with the REST step UI.
+    ![Alt Text](images/042_rest_step_ui.png)
 
-* Screenshot images should have a border applied in :  1 pt, dark gray (hex #424242, dec 66,66,66) (This should be .75 px, but Snagit only supports integers and points, not pixels).
+### Define Connection Information
 
-    ![](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-10-10-46-35.png)
+When configuring an REST step, there are two options for defining the endpoint you will connect to:
 
-* Avoid entire screenshots when not needed
+1. Use Connection Alias
+2. Define Connection Inline
 
-    Keep in mind that many guidebook users may be viewing your content using mobile devices. Full screenshots are difficult to read on a tablet or mobile phone. For example, this image of Studio is difficult to read on a desktop, let alone a small screen.
+Whenever possible, you should use a Connection Alias when designing your step. There are two primary reasons to define connections inline:
 
-    **Bad**:
+1. Quick prototyping/testing.
+2. When connection info is dynamic and will be passed into the action as an input or otherwise dynamically determined (e.g. the REST step will connect to an address defined in a Configuration Item record passed into the flow).
 
-    ![](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-11-08-40-50.png)
+In this lab, we will start with an inline connection, and convert the action to use a Connection Alias later.
 
-    Providing instructions to click *Create Application File* are not much help. Instead, take a screenshot of the area of focus *in context* (with some additional elements in the shot or partially in the shot) to help the viewer locate where you want them to focus.
+1. Change the **Connection** choice to “Define Connection Inline”.
+. Set the **Base URL** to `https://westcentralus.api.cognitive.microsoft.com`
+1. Set the **Resource Path** to `/text/analytics/v2.0/sentiment`
+1. Make sure there are no leading/trailing spaces in the Base URL an Resource Path fields.
+1. Set the **HTTP Method** to “POST”.
 
-    **Good**:
+### Add Headers
 
-    ![](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-11-08-43-59.png)
+You will add two request headers.
 
-* If you find you need a full screen shot...
+1. Inside the **Headers** widget, click the **+ Add** button.
+2. Set the header **Name** to `Content-Type`.
+3. Set the header **Value** to `application/json`.
+4. Add another header.
+5. Set the header **Name** to `Ocp-Apim-Subscription-Key`.
+6. Set the header **Value** to the Subscription Key you saved from Microsoft earlier.
+7. Again, make sure there is no extra whitespace at the beginning/end of these field values.
 
-    There will be times when you need an entire screenshot in your lab guide. Use these sparingly - often to show a "finished product" such as a dashboard layout.
+The headers widget should now look something like this:
 
-    * Make the font as large as possible
+![Alt Text](images/043_headers.png)
 
-        Use your browser's zoom feature to make the font as large as possible without affecting the layout of the screen. This improves the readability.
+### Set Request Body
 
-    * Use arrows to indicate areas of focus
+Under the **Request Content** section, set the **Request Body** to:
 
-        If you need to draw attention to a screen element in a larger context, use an arrow and label to clearly indicate where the reader should focus.
+    {
+       "documents":  [
+            {
+                "language": "en",
+                "id": "string",
+                "text": "I <3 IntegrationHub"
+            }
+        ]
+    }
 
-        ![](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-11-08-53-17.png)
+**Save** the action.
 
-* Do not exceed image width of 1024px
+### Test the Action
 
-* When you have an image representing multiple steps, provide numeric indicators and reference them in the text
+Using the same steps you followed earlier, test the action again. This time, inspect the details of the REST step. If everything worked correctly, you will see a response from the Sentiment API.
 
-    Example:
+![Alt Text](images/044_result_of_rest_test.png)
 
-    1. In the left column, click **Data Model** (1), then in the middle, click **Table** (2), and finally click **Create** in the lower right (3).
+## Data Pills
 
-    ![](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/2019-10-11-08-57-24.png)
+There’s problem with the REST step you just configured. You hard-coded the message into the Body. Action Designer gives you the ability to include “Data Pills” (those blue things in the Data Pane) inside the Payload.
 
-* Consider using animated GIFs to demonstrate concepts like drag and drop
+1. Remove the hard coded message from the “text” property in the payload.
+2. With the cursor inside the quotes, click the Data Pill Picker.
+    ![Alt Text](images/045_data_pill_picker.png)
+3. Click **Inputs** and then click the **Text** input you created earlier.
+    ![Alt Text](images/046_data_pill_picker_select_text_input.png)
+4. You should now see the **action -\> Text** data pill inside the “text” property of the payload. If there are any extra spaces between the data pill and the closing quote, remove them.
+    ![Alt Text](images/047_request_body_with_pill.png)
+5. **Save** the action.
 
-    Using a tool like SnagIt, you can capture motion and create animations that demonstrate short snippets that maybe difficult to convey with a static image.
+### Test the Action with the Data Pill in place
 
-    ![](https://github.com/ServiceNowEvents/GuidebookTemplate/raw/master/images/drag_and_drop_example.gif)
+Go back to your test flow, and set the input of the flow to the sentence you would like to analyze. Test the flow, and make sure the Action input made it into the Sentiment API call.
 
-# Writing Style
+# Configure a Connection Alias and Connection
 
-## General
+There’s another problem with the action you just built. You hard-coded the connection information into the action, including the Subscription Key. If you were talking to a development system and then moved the action into a production environment, or the subscription key changes, you’d have to modify the action directly, which is definitely not something you should do.
 
-* Escape special characters in Markdown. This includes \(\)\[\]\{\}\<\>.
+**Connection Aliases** allow you to decouple connection information from the actions you design. They give you the flexibility to build and distribute actions without knowing the connection info beforehand. This gives admins the ability to configure/maintain connections without having to touch the action itself.
 
-* Identify questions and notes with the Markdown prefix **>**
+## Create a Connection Alias
 
-    > Note: If you get a 403 error, check your headers.
+In this section, you will create a Connection Alias to be used by all of the actions in your spoke.
 
-    > Question: Did the list show 5 records?
+1. Make sure the correct application is active.
+    ![Alt Text](images/048_verify_active_application.png)
+2. Navigate to **Connections & Credentials \> Connection & Credential Aliases**.
+3. Click **New**.
 
-* As the learner reads your guidebook, provide them fewer details.
-    
-    For example, after you have given the six-step instructions to create a user record, you do not provide the same six steps for each additional user record. Simply give instructions such as: *Repeat steps 1-6 to create two additional user accounts for Tom Harrington, and Dory Williams.* Assume the learner is learning! This also makes it easier to maintain the guidebook should any of the details change.
+    ![Alt Text](images/049_new_connection_alias.png)
 
-* Use tables when providing repetitive data entry instructions
+4. Set the following fields:
+    - **Name**: CC18\_MS\_Text\_Analytics
+    - **Type**: Connection & Credential
+    - **Connection type**: HTTP
+    ![Alt Text](images/050_connection_alias_form.png)
+5. Right click the header and click the **Save** button to save the Connection Alias.
 
-    Example:
+    ![Alt Text](images/051_right_click_save_alias.png)
 
-    1. Fill in the New account form with the data from this table:
+### Connection Attributes
 
-        | Field | Value |
-        |-------|-------|
-        | Name | Acme Corp |
-        | Location | 333 Cliffside Rd, Tucson AZ |
-        | Contact name | Wile E. Coyote |
+In addition to the core properties that can be defined in a connection (e.g. endpoint, port, etc.), you can define additional **Connection Attributes** that will be made available to the Actions using that connection alias.
 
-* Add a reference section to the docs pages or other helpful material at the end of each lab exercise.
+### Define a Connection Attribute
 
-    **Reference**:
-    * [Flow Designer](https://docs.servicenow.com/bundle/newyork-servicenow-platform/page/administer/flow-designer/concept/flow-designer.html)
-    * [Community](https://community.servicenow.com)
+The API we are communicating with requires us to send a **Subscription Key** with every request. This will not be sent as part of a traditional Basic Auth or OAuth credential, so we will use a Connection Attribute to store and access this value.
 
-* Validate all code against [technical best practices](https://developer.servicenow.com/app.do#!/catlist/technical_best_practices?v=newyork).
+1. Make sure the Connection Alias you just created is open.
+2. Select the **Connection Attributes** tab and click the **New** button.
 
-    Examples include:
+    ![Alt Text](images/052_new_attribute.png)
 
-    * Avoid dot walking to a sys_id. A reference field value *is* a sys_id, so dot-walking is redundant and costs an extra database query.
+3. Set the following field values:
 
-        **NO**:
-        ```javascript
-        var id = current.caller_id.sys_id;
-        ```
-        
-        **YES**:
-        ```javascript
-        var id = current.getValue('caller_id');
-        ```
+    **Type:** String
+    **Label:** Subscription Key
+    **Column name:** \<leave the generated value\>
+    **Max length:** 100
 
-    * Use GlideRecord getValue() instead of using dotted-notation. Using dotted-notation can return incorrect values as the dotted field is an object (making work in Service Portal frustrating) and GlideRecord is a pointer (making values in loops troublesome). getValue() also allows you to use variables for field names.
+    ![Alt Text](images/053_new_attribute_form.png)
+4. Click the **Submit** button.
 
-       **NO**:
-        ```javascript
-        var location = userGr.location;
-        ```
+## Create a Connection
 
-       **YES**:
-        ```javascript
-        var location = userGr.getValue('location');
-        ```
+By itself, an Alias doesn’t do anything. You must define a **Connection** in order to actually use the Alias. In this lab, you will only create a single connection, but imagine a scenario where you have separate connections for a dev, test, and production environment.
 
-    * When you need to dot-walk to a reference value, use toString(). Do not use toString() in place of getValue() in the previous example.
+1. From the Connection Alias form, switch to the **Connections** tab. Click the **New** button.
 
-       **NO**:
-        ```javascript
-        var locationID = current.caller_id.location;
-        ```
+    ![Alt Text](images/054_new_connection.png)
 
-       **YES**:
-        ```javascript
-        var locationID = current.caller_id.location.toString();
-        ```
+2. Set the **Name** to “MS Text Analytics (West)”.
+3. Set the **Connection URL** to
 
-    * Use setValue() instead of dotted notation when setting a field value.
+    `https://westcentralus.api.cognitive.microsoft.com`
 
-        **NO**:
-        ```javascript
-        incGr.state = 5;
-        ```
+4. Under the **Attributes** section, set the **Subscription Key** to the key you obtained earlier in this lab.
+5. The form should look something like this:
 
-       **YES**:
-        ```javascript
-        incGr.setValue('state', 5);
-        ```
+    ![Alt Text](images/055_new_connection_form.png)
 
-    * Avoid hard coding sys_ids. Use a property value, or use the setDisplayValue() method (or both) where you can. sys_ids and other hard coded strings are difficult to read and maintain.
+6. Click the **Submit** button to create the connection.
 
-       **NO**:
-        ```javascript
-        current.assignment_group = '3176fe10db4e1340cbf6d5b0cf9619cd';
-        ```
+### Update the REST Step to Use the Alias
 
-       **YES**: Set a system property like:
+You must now update the REST step to use the connection Alias and the Subscription Key attribute instead of the hard coded values.
 
-       | Field | Value |
-       |-------|-------|
-       | Name | my_app.default.assignment_group | 
-       | Value | Help Desk |
+1. Open the REST Step in the Action you created earlier.
+2. Change the **Connection** field to “Use Connection Alias”.
+3. Set the **Connection Alias** field to the Alias you just created.
 
-        ```javascript
-        current.assignment_group.setDisplayValue(gs.getProperty('my_app.default.assignment_group'));
-        ```
+    ![Alt Text](images/056_connection_details.png)
 
-    * Use GlideRecord setLimit(1) when you only need one record to check if a record exists. This can greatly speed up queuries.
+4. Notice that a new variable called **Subscription Key** is now available in the Data Pane section for the REST Step.
 
-       **NO**:
-        ```javascript
-        var incGr = new GlideRecord('incident');
-        incGr.addQuery('active', true);
-        incGr.addQuery('priority', 1);
-        incGr.query();
+    ![Alt Text](images/057_data_pane_subscription_key.png)
 
-        if (incGr.next()) {
-            return incGr;
-        }
-        ```
+5. Remove the hard-coded Subscription Key from the `Ocp-Apim-Subscription-Key` header.
+6. Drag the **Subscription Key** data pill from the data pane to the value field.
 
-       **YES**:
-        ```javascript
-         var incGr = new GlideRecord('incident');
-        incGr.addQuery('active', true);
-        incGr.addQuery('priority', 1);
-        incGr.setLimit(1);
-        incGr.query();
+    ![Alt Text](images/058_drag_subscription_key_to_header.png)
 
-        if (incGr.next()) {
-            return incGr;
-        }
-       ```
-    
-## Emphasis
+7. **Save** the action.
+8. **Test** the action again, and make sure everything still works.
 
-* Do not use "quotes" for emphasis.
+The Action is now fully reusable! You can now pass data into the action, and configure connection / subscription key information without modifying the action.
 
-* Use **bold** for:
+# The Script Step
 
-    * Anything users click, type, or drag
-	    * Example: Click the **Save** button.
-    * Application Navigator paths
-    	* Example: Use the Application Navigator to open **System Applications \> Studio**.
-    * Application Explore paths
-	* Example: To open an applet in Studio, use the Application Explorer to open **Mobile Studio \> Applets \> \<applet name\>**.
+Right now, the Action is getting a sentiment score, but isn’t doing anything useful with it. In this exercise, you will use a Script Step to parse the output of the REST step.
 
-* Use *italics* for:
+Script Steps give you access to the full power of the ServiceNow platform. You can make calls to any server-side scripts (as long as they are available in your scope) and they give you the power to create new kinds of actions that don’t yet exist.
 
-    * Application names
-	    * Open the *NeedIt* application in Studio.
-    * Application file names
-	    * Example: Configure the *Update Record* action.
-    	* Example: The *NeedIt When needed field date* Business Rule prevents creating *NeedIt* records with *When needed* field values in the past. 
-    * Field names and values
-	    * Example: *Name*: **Shopping List**
-	    * Example: In the example, the *Starting Number* field contains a 4-digit number. 
-	    * Example: When the *Active* field is *true*...
-    * Related list names
-	    * Example: Click the **New** button on the *HTTP Methods* related list.
-    * Dialog names
-    	* In the *Select Application* dialog, click the **NeedIt** link to open the *NeedIt* application for editing.
+1. Add a new Action Step after the REST step. When prompted, choose the **Script** step.
 
-* Use \< \> around variable data or data a user selects. (Do not forget to use backslash before \< and \>.)
+    ![Alt Text](images/059_script_step_button.png)
 
-    * Example: To open an applet in Studio, use the Application Explorer to open **Mobile Studio \> Applets \> \<applet name\>**.
-    * Example: *When needed*: **\<select any date in the future\>**
+## Script Input Variables
 
-* Use ( ) for values that are automatically populated.
+The script step gets its own set of input variables. This allows you to map data from the data pane into script-friendly variables.
 
-    * Example: *Scope*: **(This value is automatically populated)**
+1. In the **Input Variables** widget, click the **+ Create Variable** button.
+2. Set the **Name** to `responseBody`.
+3. Drag the **Response Body** data pill from the data pane to the **Value** field. You can now reference the Response Body in your script as `inputs.responseBody`.
 
-* Use (path \> item) for data pills.
+    ![Alt Text](images/060_response_body_script_input.png)
 
-    * Example: *Record*: **(Trigger \> NeedIt Record)**
+4. Set the script to:
 
-* Use \[ \] to separate components of multi-part fields and conditions.
+    (function execute(inputs, outputs) {
+      var scoreObject = JSON.parse(inputs.responseBody);
+      var score = Number(scoreObject.documents[0].score);
+      outputs.score = score.toFixed(2);
+    })(inputs, outputs);
 
-    * Example: *Fields*: **\[State\] \[Approved\]**
-    * Example: *Condition*: **\[Short description\] \[contains\]\[printer\]**
+## Script Output Variables
 
-## Numbering
+You may notice that the script is setting something you haven’t yet defined: `outputs.score`.
 
-Numbering renders in the proper sequence regardless of the numbers used in the markdown and restarts at H2s and parent list items. To keep things simple, begin each numbered line with a *1.* to ensure proper numbering.
+Similar to Script Input Variables, Script Output Variables allow you to pass data out of your script to other steps in the action. These variables are internal to the action, and are not surfaced in Flow Designer.
 
-For example, when adding application files to Studio, always use the same verbiage:
+1. In the **Output Variables** widget, click the **+ Create Variable** button.
+2. Set the **Name** to “score”.
+3. Set the **Type** to “Floating Point Number”.
+4. You will now see a new data pill in the **Script step** section of the Data Pane.
 
-1. Create a UI Policy.
+# Action Outputs
 
-   1. In Studio, click the **Create Application File** button.
+Use Action Outputs to return data from the action to Flow Designer. The Script Output Variable we just defined is intentionally “private” to the action and is intended for use by scripts or other action steps (thus, the camel case naming convention).
 
-   1. In the *Filter...* field enter the text **UI Policy** OR select **Client Development** from the categories in the left hand pane.
+The same naming considerations we used for Action Inputs also apply to Action Outputs. Outputs should always be human readable, use natural language, and should not contain underscores or use variable naming conventions like camelCase.
 
-   1. Select **UI Policy** in the middle pane as the file type then click the **Create** button.
+**GOOD**: Score.
+**BAD**: score.
 
-1.	Configure the UI Policy:
+1. Click the **Outputs** section in the **Action Outline**.
+2. Click the **+ Create Output** button.
+3. Set the **Label** to “Score”.
+4. Using the Data Pill Picker, set the **Value** to the “score” Script Output Variable.
 
-    | Field | Value |
-    |-------|-------|
-    | Table | **NeedIt \[x\_\<your\_company\_code\>\_needit\_needit\]** |
-    | Active | **Selected (checked)** |
-    | Short description | **NeedIt show or hide Other field** |
+    ![Alt Text](images/061_outputs.png)
 
-## Code
+5. **Save** the Action.
 
-* Surround code in triple-backtick marks (\`\`\`)
+## Use the Output
 
-    Surrounding your code in \`\`\` marks formats the code to be easily copied and pasted. Using the language inside the starting ticks makes enables keyword highlighting as well.
+Now that the action is returning the score, you can use it in the Flow. Make the following modifications to the test flow you created.
 
-    ```javascript
-    var incGr = new GlideRecord('incident');
-    incGr.query();
-    var count = incGr.getRowCount();
-    ```
+1. Change the **Text** input on the Get Sentiment Score action to use the **Trigger -\> Incident Record -\> Short description** data pill.
+2. Add an **Add Worknote** action to the flow.
+3. Set the **Task [Incident]** to the **Trigger -\> Incident Record** data pill.
+4. Set the **Work note** to “Sentiment score for incident is: (1 -\> Score)”, where “(1 -\> Score)” is the Score output from the Get Sentiment Score action.
 
-* If your script exceeds more than 20 lines, link to a repository or downloadable text file in the *files* folder.
+At this point, your flow should look something like this.
 
-# Grammar and Clarity
+![Alt Text](images/062_updated_flow_up_to_now.png)
 
-* For mobile instructions, use "tap" instead of "click"
-    * **NO**: Click the camera icon.
-    * **YES**: Tap the camera icon.
+## Publish the Action
 
-* Use "Click" or "Tap", not "Click on" or "Tap on"
-    * **NO**: At the bottom of the form, click on the **Submit** button.
-    * **YES**: At the bottom of the form, Click the **Submit** button.
+Run another test, and go check the Incident record to see the work note added by the flow.
 
-* Avoid passive sentences. If you find yourself using words like *should* and *will*, rewrite your instructions to be more active.
-    * **NO**: The form will display the number of records.
-    * **YES**: The form displays the number of records.
-    * **NO**: You should see a screen a list with five rows.
-    * **YES**: A list with five rows is displayed.
+If everything looks good, click the **Publish** button on the action to make it available for all flows.
 
-* Avoid using *you* and other second-person pronouns in concept pages.
+# Challenge Exercise
 
-* NEVER use *we*, *our*, and other first-person pronouns.
+If you have completed the other exercises early and wish to continue learning, consider implementing a solution to the following use case building on the work you have done thus far.
 
-* Do not use "once" to indicate continuation.
+## Use case
 
-    * **NO**: Once you complete the form, click **Save**.
-    * **YES**: When you have completed the form, click **Save**.
+A new team has been formed to handle customer issues. The team is called "Customer Success" and consists of the following team members:
 
-* Do NOT use contractions.
+- Abraham Lincoln
+- John Adams
+- George Washington
 
-* Use the Oxford comma for this, that, and the other things.
+Your job is to create a "customer response" record based on sentiment scores below 0.20 and assign it to the customer success team.
 
-* Log in is a verb and login is an adjective or noun. “Use the login screen to log in to your instance.”  (Notice it is not log into because the verb is ‘log in’)   Same with sign in / signin and log out / logout.
+Here's a rough outline of things you'll need to do:
 
-* UTILIZE should NEVER be used in our content as it means to use something not fit for purpose.  As in, “make do with”.
-
-* Give clarity as to where someone should look for something.  
-	* **NO**: Click **Save**.  
-	* **YES**: In the Properties dialog, click the **Save** button.
-* Do not use positional words unless required.  
-	* **NO**: In the screenshot below...  
-	* **YES**: In the example...
-
+1. Create a new customer success group with the members listed above.
+1. Create a new customer response table.
+1. Use the action you created in your custom spoke to identify records with a given score.
+1. Based on that score, create a record in the customer response table.
