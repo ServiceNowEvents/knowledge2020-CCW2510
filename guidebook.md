@@ -1,11 +1,3 @@
-# Prerequisites
-
-In order to complete this lab, you must obtain a subscription key for the Microsoft Text Analytics API.
-
-Sign up for a free trial key here: [https://azure.microsoft.com/en-us/try/cognitive-services/?api=text-analytics](https://azure.microsoft.com/en-us/try/cognitive-services/?api=text-analytics)
-
-Once you have the key, keep it handy - you’ll need it throughout this lab.
-
 # Lab Overview
 
 IntegrationHub gives developers, admins and business process owners a centralized place to build and manage integrations. “Content” in IntegrationHub is made up of a series of “Spokes”. Spokes are self-contained scoped applications that contain all of the artifacts that make up an integration, primarily “Actions”.
@@ -43,7 +35,7 @@ When choosing a name for your Spoke, you should keep a few things in mind.
     ![Alt Text](images/004_start_from_scratch.png)
 1. Fill out the “Create Application” form with the following values:
 
-    **Name**: Microsoft Text Analytics Spoke
+    **Name**: London Spoke
     **Scope**: x\_snc\_ms\_txt\_spoke
     ![Alt Text](images/005_new_app_form.png)
 1. Click the **Create** button.
