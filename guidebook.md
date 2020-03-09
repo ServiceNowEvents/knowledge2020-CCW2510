@@ -18,10 +18,10 @@ When choosing a name for your Spoke, you should keep a few things in mind.
 1. To make it easier to distinguish Spoke apps from other apps, add “Spoke” to the end of the application name. When the Spoke is rendered in the Flow Designer UI, the word “Spoke” will be removed.
 
     **Application Record**:
-    ![Alt Text](images/./images/001_create_application.png)
+    ![Alt Text](/images/001_create_application.png)
 
     **Flow Designer UI**:
-    ![Alt Text](images/./images/002_flow_designer_new_spoke.png)
+    ![Alt Text](/images/002_flow_designer_new_spoke.png)
 
 ## Create the Spoke
 
