@@ -18,10 +18,10 @@ When choosing a name for your Spoke, you should keep a few things in mind.
 1. To make it easier to distinguish Spoke apps from other apps, add “Spoke” to the end of the application name. When the Spoke is rendered in the Flow Designer UI, the word “Spoke” will be removed.
 
     **Application Record**:
-    ![Alt Text](/images/001_create_application.png)
+    ![Alt Text](images/./images/001_create_application.png)
 
     **Flow Designer UI**:
-    ![Alt Text](/images/002_flow_designer_new_spoke.png)
+    ![Alt Text](images/./images/002_flow_designer_new_spoke.png)
 
 ## Create the Spoke
 
@@ -35,7 +35,7 @@ When choosing a name for your Spoke, you should keep a few things in mind.
     ![Alt Text](images/004_start_from_scratch.png)
 1. Fill out the “Create Application” form with the following values:
 
-    **Name**: London Spoke
+    **Name**: Lon Spoke
     **Scope**: x\_snc\_ms\_txt\_spoke
     ![Alt Text](images/005_new_app_form.png)
 1. Click the **Create** button.
@@ -69,8 +69,6 @@ To launch Flow Designer, navigate to **Flow Designer > Designer**.
 ![Alt Text](images/011_launch_flow_designer.png)
 
 This opens a new UI where you will manage and build Actions, Flows and Subflows.
-
-!Alt Text[](012_flow_designer_ui.png)
 
 ## Create the Action
 
