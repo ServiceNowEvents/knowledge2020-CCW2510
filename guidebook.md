@@ -22,7 +22,7 @@ When choosing a name for your Spoke, you should keep a few things in mind.
     ![Alt Text](images/001_create_application.png)
 
     **Flow Designer UI**:
-    ![Alt Text](mages/002_flow_designer_new_spoke.png)
+    ![Alt Text](images/002_flow_designer_new_spoke.png)
 
 ## Create the Spoke
 
