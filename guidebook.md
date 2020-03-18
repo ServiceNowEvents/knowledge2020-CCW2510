@@ -403,11 +403,13 @@ The script step gets its own set of input variables. This allows you to map data
 
 4. Set the script to:
 
-    (function execute(inputs, outputs) {
-      var scoreObject = JSON.parse(inputs.responseBody);
-      var score = Number(scoreObject.documents[0].score);
-      outputs.score = score.toFixed(2);
-    })(inputs, outputs);
+```javascript
+(function execute(inputs, outputs) {
+    var scoreObject = JSON.parse(inputs.responseBody);
+    var score = Number(scoreObject.documents[0].score);
+    outputs.score = score.toFixed(2);
+})(inputs, outputs);
+```
 
 ## Script Output Variables
 
