@@ -19,30 +19,28 @@ When choosing a name for your Spoke, you should keep a few things in mind.
 1. To make it easier to distinguish Spoke apps from other apps, add “Spoke” to the end of the application name. When the Spoke is rendered in the Flow Designer UI, the word “Spoke” will be removed.
 
     **Application Record**:
-    ![Alt Text](images/001_create_application.png)
+    ![Create Application](images/001_create_application.png)
 
     **Flow Designer UI**:
-    ![Alt Text](images/002_flow_designer_new_spoke.png)
+    ![Add the Action to a Flow](images/002_flow_designer_new_spoke.png)
 
 ## Create the Spoke
 
 1. Navigate to **System Applications \> Studio**.
 
-    ![Alt Text](images/003_nav_to_studio.png)
+    ![Navigate to Studio](images/003_nav_to_studio.png)
 
 1. Click the **Create Application** button.
-1. Click the **Create** button next to the “Start from Scratch” option.
-
-    ![Alt Text](images/004_start_from_scratch.png)
 1. Fill out the “Create Application” form with the following values:
 
-    **Name**: Microsoft Text Analytics Spoke
-    **Scope**: x\_snc\_ms\_txt\_spoke
-    ![Alt Text](images/005_new_app_form.png)
+    **Name**: London Transit Spoke
+
+    **Scope**: [will be autofilled]
+    ![Create New App Form](images/005_new_app_form.png)
 1. Click the **Create** button.
-1. Confirm that you wish to create the application in the resulting dialog.
-1. Click the **Back to list** button.
-1. Click the **Microsoft Text Analytics Spoke** entry to open the new application in Studio.
+1. In the subsequent dialog click the **Continue in Studio (Advanced)** link.
+    ![Continue in Studio](images/005a_continue_in_studio.png)
+1. Click the **London Transit Spoke** entry to open the new application in Studio.
     ![Alt Text](images/006_pick_application.png)
 
 ## Set the Spoke Icon
@@ -51,13 +49,13 @@ When building a Spoke, you can set an icon associated with the application. This
 
 1. Using Google Images or a similar service, find the icon you wish to use.
 2. In Studio, click **File \> Settings**.
-    ![Alt Text](images/007_file_settings.png)
+    ![File Settings](images/007_file_settings.png)
 3. Click the **Click to add…** link next to the Logo field.
-    ![Alt Text](images/008_click_to_add_logo.png)
+    ![Click to Add Logo](images/008_click_to_add_logo.png)
 4. Click the **Browse…** button and navigate to the image you chose.
-    ![Alt Text](images/009_browse_choose_image_file.png)
+    ![Browse to the Image You Downloaded](images/009_browse_choose_image_file.png)
 5. Click the **OK** button. The image you chose will now be shown.
-    ![Alt Text](images/010_image_has_been_chosen.png)
+    ![Click OK](images/010_image_has_been_chosen.png)
 
 # Create your first Action
 
