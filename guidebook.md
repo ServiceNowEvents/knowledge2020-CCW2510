@@ -65,22 +65,24 @@ Now that you have a scoped app to work with, it’s time to create your first Ac
 
 To launch Flow Designer, navigate to **Flow Designer > Designer**.
 
-![Alt Text](images/011_launch_flow_designer.png)
+![Flow Designer User Interface](images/011_launch_flow_designer.png)
 
 This opens a new UI where you will manage and build Actions, Flows and Subflows.
 
 ![Alt Text](images/012_flow_designer_ui.png)
 
-## Create the Action
+## Create the First Action
 
-1. Click the **+ New** button, and then click **New Action** in the resulting menu.
+1. Click the **+ New** button, and then click **Action** in the resulting menu.
 
-    ![Alt Text](images/013_new_action.png)
+    ![Click Action](images/013_new_action.png)
 
 2. Fill out the Action Properties form.
 
-    **Name:** Get Sentiment Score
-    **Application:** Microsoft Text Analytics Spoke
+    **Name:** List Valid Modes
+
+    **Application:** London Transit Spoke
+
     **Description:** Enter a description - simple HTML tags are also supported
 
     ![Alt Text](images/014_action_description.png)
