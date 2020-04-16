@@ -98,9 +98,9 @@ Actions are made up of a series of steps. You will now add a simple Log step to 
 1. Click the **Add a new step** button (+).
     ![Alt Text](images/016_add_new_step.png)
 2. A new dialog will open with a list of available action steps. Click the **Log** step to add it to the Action.
-    ![Alt Text](images/017_select_log_step.png)
-3. Leave the **Log Level** at “info” and set the **Log Message** field to “Hello, World!”.
-    ![Alt Text](images/018_log_step_hello_world.png)
+    ![Select the Log Step](images/017_select_log_step.png)
+3. Leave the **Log Level** at "Info" and set the **Log Message** field to "Hello, World!".
+    ![Add the Log Step](images/018_log_step_hello_world.png)
 4. Click the **Save** button on the Action. **Do not** click the Publish button yet. We’ll get to that in a bit.
 
 # Create a Test Flow
