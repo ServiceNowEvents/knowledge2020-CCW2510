@@ -141,12 +141,10 @@ Now it’s time to add your action to the test flow.
 
     ![Select to add Action](images/026_select_to_add_action.png)
 
-2. Click the **Action** button.
-3. Click the **London Transit** Spoke.
-4. Click the **List Valid Modes** Action.
-    ![In the London Transit Spoke Select the List Valid Modes Action](images/027_select_list_valid_modes_action.png)
-5. The Action is now part of the Flow.
-    ![List Valid Modes Action is Now In Flow](images/028_list_valid_modes_action_on_flow.png)
+1. Click the **Action** button. Click the **London Transit** Spoke. Click the **List Line Statuses** Action.
+    ![In the London Transit Spoke Select the List Line Statuses Action](images/027_select_list_line_statuses_action.png)
+1. The Action is now part of the Flow.
+    ![List Line Statuses Action is Now In Flow](images/028_list_line_statuses_action_on_flow.png)
 
 ### Test the Flow
 
