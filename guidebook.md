@@ -170,15 +170,13 @@ In this exercise, you will integrate to the London Transport API quickly via Ope
 When integrating to external systems with IntegrationHub, OpenAPI can be a great convenience. This allows for the automatic import of all the endpoints defined in the OpenAPI specification. Not only is this a great timesaver but it increases the quality and efficiency of the integration by guaranteeing correctness of the input and output parameters.
 
 1. Navigate to the tab for the **List Valid Modes** action or reopen if it has been closed.
-1. Delete the Log step by clicking the X icon.
-   ![Execution Details Expanded](images/032a_delete_log.png)
 1. Add a new step above the Log step by clicking the **+** icon above it.
 1. Under the **Integrations** section select the **REST** step
  ![Execution Details Expanded](images/032b_add_rest_step.png)
 1. Under the **Request Details** section change the **Build Request** option from **Manually** to **From OpenAPI Specification**. The **Import OpenAPI** button is now visible. Click it.
    ![Click Import OpenAPI](images/032c_import_openapi.png)
   
-1. In the **Import OpenAPI Specification** dialog, ensure that **Import Method** is set to **Manually Populate OpenAPI Content**. Open the [OpenAPI specifiation file](files/longdon-transport.yaml) in a text editor. Copy the contents and paste into the field **OpenAPI Content**. Click **Import**.
+1. In the **Import OpenAPI Specification** dialog, ensure that **Import Method** is set to **Manually Populate OpenAPI Content**. Open the [OpenAPI specifiation file](files/london-transport.yaml) in a text editor. Copy the contents and paste into the field **OpenAPI Content**. Click **Import**.
    ![Complete OpenAPI dialog](images/032d_import_openapi_dialog.png)
 1. In the **API Operation** field, type in "*mode" to search on the possible choices that contain that text. Select "Get a list of valid modes" choice.
 1. Examine the populated values after the selection is made. The **Resource Path**, **HTTP Method** and **Headers** are automatically filled in.
