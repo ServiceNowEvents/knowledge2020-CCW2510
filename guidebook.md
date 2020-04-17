@@ -521,3 +521,13 @@ Now that the REST Step and XML Parser are configured you will finalize this acti
 
 Congratulations! You have created a full integration via OpenAPI and created an Action that integrates to it.
   
+# Challenge Lab
+
+Your spoke now has two actions in it - one that provides a status of all the lines given a mode and one that returns a list of modes. Your challenge is to author a flow to connect the two actions such that you can iterate over all the available modes in the API and get a status for each.
+
+## Design possibilities
+
+- The List Line Statuses action takes a mode but also takes a comma separated list of modes. You could invoke it multiple times with a single mode or perform a join to produce a single input.
+- You can choose a variety of options to handle the status outputs. If you want to modify your action to include the numeric status, this could be used in an if-statement to handle different severities differently.
+- Have fun and be creative if you can think of any interesting thing you would like to do with these actions.
+- Consider taking actions from other Spokes to integrate with other systems, such as sending messages to Slack or MS Teams. Get a feel for how actions across spokes create business logic and can carry out your processes in automated fashion.
