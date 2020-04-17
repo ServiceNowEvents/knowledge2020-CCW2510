@@ -278,7 +278,7 @@ Test as you did before with the **Test** button. You will be presented with a fo
 
 # Configure a Connection Alias and Connection
 
-There’s another problem with the action you just built. You hard-coded the connection information into the action, including the Subscription Key. If you were talking to a development system and then moved the action into a production environment, or the subscription key changes, you’d have to modify the action directly, which is definitely not something you should do.
+There’s another problem with the action you just built. You hard-coded the connection information into the action. If you were talking to a development system and then moved the action into a production environment, or any authentication changes you would have to modify the action directly.
 
 **Connection Aliases** allow you to decouple connection information from the actions you design. They give you the flexibility to build and distribute actions without knowing the connection info beforehand. This gives admins the ability to configure/maintain connections without having to touch the action itself.
 
@@ -294,7 +294,7 @@ In this section, you will create a Connection Alias to be used by all of the act
     ![Alt Text](images/049_new_connection_alias.png)
 
 4. Set the following fields:
-    - **Name**: CC18\_MS\_Text\_Analytics
+    - **Name**: CC20_London_Transit
     - **Type**: Connection & Credential
     - **Connection type**: HTTP
     ![Alt Text](images/050_connection_alias_form.png)
@@ -308,7 +308,7 @@ In addition to the core properties that can be defined in a connection (e.g. end
 
 ### Define a Connection Attribute
 
-The API we are communicating with requires us to send a **Subscription Key** with every request. This will not be sent as part of a traditional Basic Auth or OAuth credential, so we will use a Connection Attribute to store and access this value.
+
 
 1. Make sure the Connection Alias you just created is open.
 2. Select the **Connection Attributes** tab and click the **New** button.
@@ -318,9 +318,12 @@ The API we are communicating with requires us to send a **Subscription Key** wit
 3. Set the following field values:
 
     **Type:** String
-    **Label:** Subscription Key
+
+    **Label:** Version
+
     **Column name:** \<leave the generated value\>
-    **Max length:** 100
+
+    **Max length:** 10
 
     ![Alt Text](images/053_new_attribute_form.png)
 4. Click the **Submit** button.
@@ -329,14 +332,16 @@ The API we are communicating with requires us to send a **Subscription Key** wit
 
 By itself, an Alias doesn’t do anything. You must define a **Connection** in order to actually use the Alias. In this lab, you will only create a single connection, but imagine a scenario where you have separate connections for a dev, test, and production environment.
 
+The API in this lab does not require  authentication for most endpoints although it does have some. When using an API with API keys, passwords or OAuth configuration it would be configured as a Credential associated with this Connection. Understand that for future use that this is the correct spot, although not required now.
+
 1. From the Connection Alias form, switch to the **Connections** tab. Click the **New** button.
 
     ![Alt Text](images/054_new_connection.png)
 
-2. Set the **Name** to “MS Text Analytics (West)”.
+2. Set the **Name** to “London Transit (Lab)”.
 3. Set the **Connection URL** to
 
-    `https://westcentralus.api.cognitive.microsoft.com`
+    `https://api.tfl.gov.uk`
 
 4. Under the **Attributes** section, set the **Subscription Key** to the key you obtained earlier in this lab.
 5. The form should look something like this:
@@ -350,22 +355,12 @@ By itself, an Alias doesn’t do anything. You must define a **Connection** in o
 You must now update the REST step to use the connection Alias and the Subscription Key attribute instead of the hard coded values.
 
 1. Open the REST Step in the Action you created earlier.
-2. Change the **Connection** field to “Use Connection Alias”.
-3. Set the **Connection Alias** field to the Alias you just created.
+1. Change the **Connection** field to “Use Connection Alias”.
+1. Set the **Connection Alias** field to the Alias you just created.
 
     ![Alt Text](images/056_connection_details.png)
-
-4. Notice that a new variable called **Subscription Key** is now available in the Data Pane section for the REST Step.
-
-    ![Alt Text](images/057_data_pane_subscription_key.png)
-
-5. Remove the hard-coded Subscription Key from the `Ocp-Apim-Subscription-Key` header.
-6. Drag the **Subscription Key** data pill from the data pane to the value field.
-
-    ![Alt Text](images/058_drag_subscription_key_to_header.png)
-
-7. **Save** the action.
-8. **Test** the action again, and make sure everything still works.
+1. **Save** the action.
+1. **Test** the action again, and make sure everything still works.
 
 The Action is now fully reusable! You can now pass data into the action, and configure connection / subscription key information without modifying the action.
 
