@@ -161,28 +161,30 @@ Now it’s time to add your action to the test flow.
 
 # Define Action Inputs
 
-Action Inputs allow you (and users of Flow Designer) to pass data into your actions. You can think of inputs as method parameters. This section will walk you through the process of creating Action Inputs for the **Get Sentiment Score** action.
+Action Inputs allow you (and users of Flow Designer) to pass data into your actions. You can think of inputs as method parameters. This section will walk you through the process of creating Action Inputs for the **List Line Statuses** action.
 
 ## Input Naming Considerations
 
 Action inputs should always have human-friendly names.
 
 **GOOD**: First name
+
 **BAD**: first\_name
 
 **GOOD**: Table Name
+
 **BAD**: tableName
 
 ## Add the Input
 
 1. Click the **Inputs** section at the top of the **Action Outline**.
-    ![Alt Text](images/034_select_inputs.png)
+    ![Click the Input Header](images/034_select_inputs.png)
 2. Click the **Create Input** button.
-    ![Alt Text](images/035_create_input_button.png)
-3. Click the “variable” label and change the value to “Text”. Turn the **Mandatory** toggle on.
+    ![Create Input](images/035_create_input_button.png)
+3. Click the “variable” label and change the value to “Modes”. Leave the type as **String**. Turn the **Mandatory** toggle on.
     ![Alt Text](images/036_input_label.png)
-4. Note that there is now a “Text” pill in the **Input Variables** section of the Data pane.
-    ![Alt Text](images/037_input_in_data_pane.png)
+4. Note that there is now a “Modes” pill in the **Input Variables** section of the Data pane.
+    ![Modes Data Pill is now on screen](images/037_input_in_data_pane.png)
 5. **Save** the Action.
 
 ## Change the Log step to use the input
@@ -190,13 +192,15 @@ Action inputs should always have human-friendly names.
 Now that the action has an input, you will change the Log step to use the value from this input.
 
 1. Open the step named **Log step**.
-2. Add a space after the existing log message, and then *drag* the **Text** input to the end of the **Log Message** input.
-    ![Alt Text](images/038_build_log_message.png)
+2. Add a space after the existing log message, and then *drag* the **Modes** input to the end of the **Log Message** input.
+    ![Building Log Message with the Data Pill](images/038_build_log_message.png)
 3. **Save** the action.
-4. Open the **Test Flow** flow you created earlier.
-5. Expand the **Get Sentiment** action and add a value to the new Text input.
-    ![Alt Text](images/039_set_get_sentiment_inputs.png)
-6. Test the flow again using the steps described earlier, and you will now see the “Text” value in the log message.
+4. Click the **Test** button at the top of the Designer page.
+ ![The Test Button for the Action](images/038a_test_button.png)
+5. Fill in a value to the **Modes** field and click **Run Test**.
+    ![Add Input to the Test](images/038b_test_action_form.png)
+6. Follow the Execution Results link as before. Examine the results of the individual steps and verify that you see your input correctly logged.
+    ![Results of the Test](images/039_test_results.png)
 
 # The REST Step
 
@@ -205,11 +209,11 @@ In this exercise, we will use the REST step. The REST step is exclusive to Integ
 ## Add a REST Step to the Action
 
 1. Click the + button underneath the Log step you added earlier.
-    ![Alt Text](images/040_add_rest_step.png)
+    ![Add the REST Step](images/040_add_rest_step.png)
 2. Click the REST step in the **Integrations** section of the dialog.
-    ![Alt Text](images/041_select_rest_step.png)
+    ![Select the REST Step](images/041_select_rest_step.png)
 3. You will be presented with the REST step UI.
-    ![Alt Text](images/042_rest_step_ui.png)
+    ![Define the REST Step](images/042_rest_step_ui.png)
 
 ### Define Connection Information
 
@@ -223,10 +227,12 @@ Whenever possible, you should use a Connection Alias when designing your step. T
 1. Quick prototyping/testing.
 2. When connection info is dynamic and will be passed into the action as an input or otherwise dynamically determined (e.g. the REST step will connect to an address defined in a Configuration Item record passed into the flow).
 
-In this lab, we will start with an inline connection, and convert the action to use a Connection Alias later.
+**Note**: Although the London Transport API needs no login, that is a rare case. In practice, almost every integration will require a Connection Alias.
+
+In this exercise, we will start with an inline connection, and convert the action to use a Connection Alias later.
 
 1. Change the **Connection** choice to “Define Connection Inline”.
-. Set the **Base URL** to `https://westcentralus.api.cognitive.microsoft.com`
+. Set the **Base URL** to `https://api.tfl.gov.uk`
 1. Set the **Resource Path** to `/text/analytics/v2.0/sentiment`
 1. Make sure there are no leading/trailing spaces in the Base URL an Resource Path fields.
 1. Set the **HTTP Method** to “POST”.
@@ -521,7 +527,6 @@ Now that the REST Step and XML Parser are configured you will finalize this acti
 
 Congratulations! You have created a full integration via OpenAPI and created your anat Action that integrates to it.
   
-
 # Challenge Exercise
 
 If you have completed the other exercises early and wish to continue learning, consider implementing a solution to the following use case building on the work you have done thus far.
