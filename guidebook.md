@@ -385,10 +385,21 @@ The script step gets its own set of input variables. This allows you to map data
 
 ```javascript
 (function execute(inputs, outputs) {
-    var scoreObject = JSON.parse(inputs.responseBody);
-    var score = Number(scoreObject.documents[0].score);
-    outputs.score = score.toFixed(2);
+    var statuses = [];
+    var statusArray= JSON.parse(inputs.responseBody);
+    for (var i=0; i<statusArray.length; i++) {
+      var parsingStatus = statusArray[i];
+      var status = {};
+      status.name =  parsingStatus.name.toString();
+      if (parsingStatus.lineStatuses.length > 0) {
+          status.description = parsingStatus.lineStatuses[0].statusSeverityDescription.toString();
+          status.reason = parsingStatus.lineStatuses[0].reason.toString();
+      }
+      statuses.push(status);
+    }
+  outputs.statuses = statuses;
 })(inputs, outputs);
+
 ```
 
 ## Script Output Variables
