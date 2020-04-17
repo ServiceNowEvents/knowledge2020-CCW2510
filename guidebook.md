@@ -233,21 +233,22 @@ In this exercise, we will start with an inline connection, and convert the actio
 
 1. Change the **Connection** choice to “Define Connection Inline”.
 . Set the **Base URL** to `https://api.tfl.gov.uk`
-1. Set the **Resource Path** to `/text/analytics/v2.0/sentiment`
-1. Make sure there are no leading/trailing spaces in the Base URL an Resource Path fields.
-1. Set the **HTTP Method** to “POST”.
+1. Set the **Resource Path** to `/Line/Mode/{modes}/Status`
+1.  Inside the **Resource Path** backspace to remove the `{modes}` portion. Drag the **Modes** Data Pill from the input between the now empty slashes so that it looks like this:
+    ![Drag the Data Pill to the Resource Path](images/042a_resource_path_with_pill.png)
+1. Make sure there are no leading/trailing spaces in the Base URL and Resource Path fields. Also verify there are no spaces between the slashes and data pill.
+1. Set the **HTTP Method** to “GET”.
 
 ### Add Headers
 
 You will add two request headers.
 
-1. Inside the **Headers** widget, click the **+ Add** button.
-2. Set the header **Name** to `Content-Type`.
-3. Set the header **Value** to `application/json`.
-4. Add another header.
-5. Set the header **Name** to `Ocp-Apim-Subscription-Key`.
-6. Set the header **Value** to the Subscription Key you saved from Microsoft earlier.
-7. Again, make sure there is no extra whitespace at the beginning/end of these field values.
+1. Beside the **Headers** widget, click the **+** icon.
+    ![Alt Text](images/042b_add_header.png)
+
+1. Set the header **Name** to `Content-Type`.
+1. Set the header **Value** to `application/json`.
+1. Again, make sure there is no extra whitespace at the beginning/end of these field values, and that the capitalization and dash in the header name are correct. HTTP is sensitive to all of this in headers.
 
 The headers widget should now look something like this:
 
