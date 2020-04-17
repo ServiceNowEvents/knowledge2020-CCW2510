@@ -233,15 +233,13 @@ In this exercise, we will start with an inline connection, and convert the actio
 
 1. Change the **Connection** choice to “Define Connection Inline”.
 . Set the **Base URL** to `https://api.tfl.gov.uk`
-1. Set the **Resource Path** to `/Line/Mode/{modes}/Status`
-1.  Inside the **Resource Path** backspace to remove the `{modes}` portion. Drag the **Modes** Data Pill from the input between the now empty slashes so that it looks like this:
-    ![Drag the Data Pill to the Resource Path](images/042a_resource_path_with_pill.png)
-1. Make sure there are no leading/trailing spaces in the Base URL and Resource Path fields. Also verify there are no spaces between the slashes and data pill.
+1. Set the **Resource Path** to `/Line/Mode/tube/Status`
+1. Make sure there are no leading/trailing spaces in the Base URL and Resource Path fields. 
 1. Set the **HTTP Method** to “GET”.
 
 ### Add Headers
 
-You will add two request headers.
+You will add one request header.
 
 1. Beside the **Headers** widget, click the **+** icon.
     ![Alt Text](images/042b_add_header.png)
@@ -254,44 +252,29 @@ The headers widget should now look something like this:
 
 ![Alt Text](images/043_headers.png)
 
-### Set Request Body
-
-Under the **Request Content** section, set the **Request Body** to:
-
-    {
-       "documents":  [
-            {
-                "language": "en",
-                "id": "string",
-                "text": "I <3 IntegrationHub"
-            }
-        ]
-    }
 
 **Save** the action.
 
 ### Test the Action
 
-Using the same steps you followed earlier, test the action again. This time, inspect the details of the REST step. If everything worked correctly, you will see a response from the Sentiment API.
+Using the same steps you followed earlier, test the action again. This time, inspect the details of the REST step. If everything worked correctly, you will see a response from the Transit API.
 
 ![Alt Text](images/044_result_of_rest_test.png)
 
 ## Data Pills
 
-There’s problem with the REST step you just configured. You hard-coded the message into the Body. Action Designer gives you the ability to include “Data Pills” (those blue things in the Data Pane) inside the Payload.
+There’s problem with the REST step you just configured. You hard-coded the mode  ("tube") in the Resource Path. Action Designer gives you the ability to include “Data Pills” (those blue things in the Data Pane) in paths, in the body of POSTs and  even inside headers.
 
-1. Remove the hard coded message from the “text” property in the payload.
-2. With the cursor inside the quotes, click the Data Pill Picker.
-    ![Alt Text](images/045_data_pill_picker.png)
-3. Click **Inputs** and then click the **Text** input you created earlier.
-    ![Alt Text](images/046_data_pill_picker_select_text_input.png)
-4. You should now see the **action -\> Text** data pill inside the “text” property of the payload. If there are any extra spaces between the data pill and the closing quote, remove them.
-    ![Alt Text](images/047_request_body_with_pill.png)
-5. **Save** the action.
+1.  Inside the **Resource Path** backspace to remove the `tube` portion. Drag the **Modes** Data Pill from the input between the now empty slashes so that it looks like this:
+    ![Drag the Data Pill to the Resource Path](images/042a_resource_path_with_pill.png)
+
+1. Verify that there is no whitespace between the slashes and the data pill.
+
+1. **Save** the action.
 
 ### Test the Action with the Data Pill in place
 
-Go back to your test flow, and set the input of the flow to the sentence you would like to analyze. Test the flow, and make sure the Action input made it into the Sentiment API call.
+Test as you did before with the **Test** button. You will be presented with a form to enter the input of the action. Because this input is mandatory, you must provide some text. Try with "tube" to verify you see the same text as before. Then for fun, try with "river-bus" or "cable-car" (or even both, comma separated.) Try as well with nonsense text to see the result of that input.
 
 # Configure a Connection Alias and Connection
 
