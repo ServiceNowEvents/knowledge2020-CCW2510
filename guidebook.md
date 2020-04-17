@@ -234,7 +234,7 @@ In this exercise, we will start with an inline connection, and convert the actio
 1. Change the **Connection** choice to “Define Connection Inline”.
 . Set the **Base URL** to `https://api.tfl.gov.uk`
 1. Set the **Resource Path** to `/Line/Mode/tube/Status`
-1. Make sure there are no leading/trailing spaces in the Base URL and Resource Path fields. 
+1. Make sure there are no leading/trailing spaces in the Base URL and Resource Path fields.
 1. Set the **HTTP Method** to “GET”.
 
 ### Add Headers
@@ -252,7 +252,6 @@ The headers widget should now look something like this:
 
 ![Alt Text](images/043_headers.png)
 
-
 **Save** the action.
 
 ### Test the Action
@@ -265,7 +264,7 @@ Using the same steps you followed earlier, test the action again. This time, ins
 
 There’s problem with the REST step you just configured. You hard-coded the mode  ("tube") in the Resource Path. Action Designer gives you the ability to include “Data Pills” (those blue things in the Data Pane) in paths, in the body of POSTs and  even inside headers.
 
-1.  Inside the **Resource Path** backspace to remove the `tube` portion. Drag the **Modes** Data Pill from the input between the now empty slashes so that it looks like this:
+1. Inside the **Resource Path** backspace to remove the `tube` portion. Drag the **Modes** Data Pill from the input between the now empty slashes so that it looks like this:
     ![Drag the Data Pill to the Resource Path](images/042a_resource_path_with_pill.png)
 
 1. Verify that there is no whitespace between the slashes and the data pill.
@@ -308,8 +307,6 @@ In addition to the core properties that can be defined in a connection (e.g. end
 
 ### Define a Connection Attribute
 
-
-
 1. Make sure the Connection Alias you just created is open.
 2. Select the **Connection Attributes** tab and click the **New** button.
 
@@ -338,17 +335,17 @@ The API in this lab does not require  authentication for most endpoints although
 
     ![Alt Text](images/054_new_connection.png)
 
-2. Set the **Name** to “London Transit (Lab)”.
-3. Set the **Connection URL** to
+1. Set the **Name** to “London Transit (Lab)”.
+1. Set the **Connection URL** to
 
     `https://api.tfl.gov.uk`
 
-4. Under the **Attributes** section, set the **Subscription Key** to the key you obtained earlier in this lab.
-5. The form should look something like this:
+1. Under the **Attributes** section, set the **Version** to the "1".
+1. The form should look something like this:
 
     ![Alt Text](images/055_new_connection_form.png)
 
-6. Click the **Submit** button to create the connection.
+1. Click the **Submit** button to create the connection.
 
 ### Update the REST Step to Use the Alias
 
@@ -401,9 +398,14 @@ You may notice that the script is setting something you haven’t yet defined: `
 Similar to Script Input Variables, Script Output Variables allow you to pass data out of your script to other steps in the action. These variables are internal to the action, and are not surfaced in Flow Designer.
 
 1. In the **Output Variables** widget, click the **+ Create Variable** button.
-2. Set the **Name** to “score”.
-3. Set the **Type** to “Floating Point Number”.
-4. You will now see a new data pill in the **Script step** section of the Data Pane.
+1. Set the **Label** and **Name** to “statuses”.
+1. Set the **Type** to “Array.Object”.
+1. Set the **Label** and **Name** of the child object to "status".
+1. We need the structure of the objects to mirror the JSON objects created above in script. Create three fields on the "status" object by clicking the **+** button icon.
+    ![Alt Text](images/059a_create_complex_object.png)
+1. Use the **Label** and **Name** as "name", "description", and "reason". Leave the Type as **String** for all three.
+    ![Alt Text](images/059b_final_complex_object.png)
+1. You will now see a new data pill in the **Script step** section of the Data Pane.
 
 # Action Outputs
 
@@ -415,22 +417,24 @@ The same naming considerations we used for Action Inputs also apply to Action Ou
 **BAD**: score.
 
 1. Click the **Outputs** section in the **Action Outline**.
-2. Click the **+ Create Output** button.
-3. Set the **Label** to “Score”.
-4. Using the Data Pill Picker, set the **Value** to the “score” Script Output Variable.
+1. Click the **+ Create Output** button.
+1. Set the **Label** to “Statuses”. Do not fill out the complex object. Click the **Exit Edit Mode** button.
+
+    ![Alt Text](images/060a_create_action_output.png)
+1. Using the Data Pill Picker, set the **Value** to the statuses Script Output Variable.
 
     ![Alt Text](images/061_outputs.png)
+1. Click the **Edit Outputs** button again to verify the complex object output was automatically created.
+    ![Alt Text](images/061a_create_complex_object_output.png)
 
-5. **Save** the Action.
+1. **Save** the Action.
 
 ## Use the Output
 
 Now that the action is returning the score, you can use it in the Flow. Make the following modifications to the test flow you created.
 
-1. Change the **Text** input on the Get Sentiment Score action to use the **Trigger -\> Incident Record -\> Short description** data pill.
-2. Add an **Add Worknote** action to the flow.
-3. Set the **Task [Incident]** to the **Trigger -\> Incident Record** data pill.
-4. Set the **Work note** to “Sentiment score for incident is: (1 -\> Score)”, where “(1 -\> Score)” is the Score output from the Get Sentiment Score action.
+1. Change the **Modes** input on the List Line Statuses action to use the text "tube".
+1. Add a **Log** step. For the **Message** use the Statuses data pill that was created for the List Line Statuses action.
 
 At this point, your flow should look something like this.
 
@@ -438,13 +442,13 @@ At this point, your flow should look something like this.
 
 ## Publish the Action
 
-Run another test, and go check the Incident record to see the work note added by the flow.
+Run a test of the flow. Look at the Execution Plan and verify you see a JSON object of bus and tube statuses in the Log statement.
 
 If everything looks good, click the **Publish** button on the action to make it available for all flows.
 
 # Create a REST Integration from OpenAPI
 
-In this exercise, you will integrate to the London Transport API quickly via OpenAPI import and the XML Parser step.
+In the previous exercises, you created your endpoints by entering all of the data yourself. For APIs that publish an OpenAPI specification, you can automatically import all the information about all endpoints in the API. In this exercise, you will integrate to a new endpoint in the London Transport API quickly via OpenAPI import and the XML Parser step.
 
 ## Import Endpoints via OpenAPI
 
@@ -504,25 +508,5 @@ Now that the REST Step and XML Parser are configured you will finalize this acti
 1. Look at the results in the viewer. You should see a parsed version of the XML payload that looks similar to the below.
     ![Results of Final Test](images/032q_final_output.png)
 
-Congratulations! You have created a full integration via OpenAPI and created your anat Action that integrates to it.
+Congratulations! You have created a full integration via OpenAPI and created an Action that integrates to it.
   
-# Challenge Exercise
-
-If you have completed the other exercises early and wish to continue learning, consider implementing a solution to the following use case building on the work you have done thus far.
-
-## Use case
-
-A new team has been formed to handle customer issues. The team is called "Customer Success" and consists of the following team members:
-
-- Abraham Lincoln
-- John Adams
-- George Washington
-
-Your job is to create a "customer response" record based on sentiment scores below 0.20 and assign it to the customer success team.
-
-Here's a rough outline of things you'll need to do:
-
-1. Create a new customer success group with the members listed above.
-1. Create a new customer response table.
-1. Use the action you created in your custom spoke to identify records with a given score.
-1. Based on that score, create a record in the customer response table.
