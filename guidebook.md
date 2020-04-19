@@ -319,7 +319,7 @@ In addition to the core properties that can be defined in a connection (e.g. end
 2. Select the **Connection Attributes** tab and click the **New** button.
 
     ![Alt Text](images/052_new_attribute.png)
-
+***ajb:     ![Alt Text](images/052_new_attribute.png)
 3. Set the following field values:
 
     **Type:** String
@@ -347,7 +347,7 @@ The API in this lab does not require  authentication for most endpoints although
 1. Set the **Connection URL** to
 
     `https://api.tfl.gov.uk`
-
+***ajb: clearly I did something wrong, attribute not showing for me
 1. Under the **Attributes** section, set the **Version** to the "1".
 1. The form should look something like this:
 
@@ -435,24 +435,26 @@ The same naming considerations we used for Action Inputs also apply to Action Ou
 **GOOD**: Score.
 **BAD**: score.
 
+***ajb: ![Action Output](images/action_outline_outputs.png)
 1. Click the **Outputs** section in the **Action Outline**.
-1. Click the **+ Create Output** button.
-1. Set the **Label** to “Statuses”. Do not fill out the complex object. Click the **Exit Edit Mode** button.
+2. Click the **+ Create Output** button.
+3. Set the **Label** to “Statuses”. Do not fill out the complex object. Click the **Exit Edit Mode** button.
 
     ![Alt Text](images/060a_create_action_output.png)
-1. Using the Data Pill Picker, set the **Value** to the statuses Script Output Variable.
+4. Using the Data Pill Picker, set the **Value** to the statuses Script Output Variable.
 
     ![Alt Text](images/061_outputs.png)
-1. Click the **Edit Outputs** button again to verify the complex object output was automatically created.
+5. Click the **Edit Outputs** button again to verify the complex object output was automatically created.
     ![Alt Text](images/061a_create_complex_object_output.png)
 
-1. **Save** the Action.
+6. **Save** the Action.
 
 ## Use the Output
 
 Now that the action is returning the score, you can use it in the Flow. Make the following modifications to the test flow you created.
 
 1. Change the **Modes** input on the List Line Statuses action to use the text "tube".
+***ajb: 1. Add a **Log** action. For the **Message** use the Statuses data pill that was created for the List Line Statuses action.
 1. Add a **Log** step. For the **Message** use the Statuses data pill that was created for the List Line Statuses action.
 
 At this point, your flow should look something like this.
@@ -472,7 +474,7 @@ In the previous exercises, you created your endpoints by entering all of the dat
 ## Import Endpoints via OpenAPI
 
 When integrating to external systems with IntegrationHub, OpenAPI can be a great convenience. This allows for the automatic import of all the endpoints defined in the OpenAPI specification. Not only is this a great timesaver but it increases the quality and efficiency of the integration by guaranteeing correctness of the input and output parameters.
-
+***ajb: this section doesn't make sense given the sections and different action above - suggest you just have them create a new action totally.
 1. Navigate to the tab for the **List Valid Modes** action or reopen if it has been closed.
 1. Add a new step above the Log step by clicking the **+** icon above it.
 1. Under the **Integrations** section select the **REST** step
@@ -490,6 +492,7 @@ When integrating to external systems with IntegrationHub, OpenAPI can be a great
 With the REST step created, now you will configure the parsing of the return value.
 
 1. Under the REST Step, delete all of the **Accept** header entries except for **text/xml** by clicking the trash can icons to the right.
+***ajb: 1. Input the Connection Alias created ealier in the **Connection Alias** field.
 1. Click the existing **Log** step. Delete the value in the **Log Message** field. From the right side, drag the Data Pill named **Response Body** and drop it in the **Log Message** field.
    ![Add Response Body to Log Message](images/032f_configure_log_message.png)
 1. Click the **Test**  button. Click the link to open the execution details. Expand the **Steps** section and scroll to the bottom.
