@@ -367,7 +367,7 @@ The Action is now fully reusable! You can now pass data into the action, and con
 
 # The Script Step
 
-Right now, the Action is getting a sentiment score, but isn’t doing anything useful with it. In this exercise, you will use a Script Step to parse the output of the REST step.
+Right now, the Action is getting a payload from the REST endpoint but isn’t doing anything useful with it. In this exercise, you will use a Script Step to parse the output of the REST step.
 
 Script Steps give you access to the full power of the ServiceNow platform. You can make calls to any server-side scripts (as long as they are available in your scope) and they give you the power to create new kinds of actions that don’t yet exist.
 
@@ -428,8 +428,9 @@ Use Action Outputs to return data from the action to Flow Designer. The Script O
 
 The same naming considerations we used for Action Inputs also apply to Action Outputs. Outputs should always be human readable, use natural language, and should not contain underscores or use variable naming conventions like camelCase.
 
-**GOOD**: Score.
-**BAD**: score.
+**GOOD**: Score
+
+**BAD**: score
 
 ![Action Output](images/action_outline_outputs.png)
 
@@ -471,8 +472,8 @@ In the previous exercises, you created your endpoints by entering all of the dat
 
 When integrating to external systems with IntegrationHub, OpenAPI can be a great convenience. This allows for the automatic import of all the endpoints defined in the OpenAPI specification. Not only is this a great timesaver but it increases the quality and efficiency of the integration by guaranteeing correctness of the input and output parameters.
 
-1. Navigate to the tab for the **List Valid Modes** action or reopen if it has been closed.
-1. Add a new step above the Log step by clicking the **+** icon above it.
+1. Create a new action called **List Valid Modes**.
+1. Add a new step by clicking the **+** icon.
 1. Under the **Integrations** section select the **REST** step
  ![Execution Details Expanded](images/032b_add_rest_step.png)
 1. Under the **Request Details** section change the **Build Request** option from **Manually** to **From OpenAPI Specification**. The **Import OpenAPI** button is now visible. Click it.
@@ -489,7 +490,7 @@ With the REST step created, now you will configure the parsing of the return val
 
 1. Under the REST Step, delete all of the **Accept** header entries except for **text/xml** by clicking the trash can icons to the right.
 1. Input the Connection Alias created ealier in the **Connection Alias** field.
-1. Click the existing **Log** step. Delete the value in the **Log Message** field. From the right side, drag the Data Pill named **Response Body** and drop it in the **Log Message** field.
+1. Add a **Log** step. From the right side, drag the Data Pill named **Response Body** and drop it in the **Log Message** field.
    ![Add Response Body to Log Message](images/032f_configure_log_message.png)
 1. Click the **Test**  button. Click the link to open the execution details. Expand the **Steps** section and scroll to the bottom.
    ![Find the Results of the Log Step](images/032g_log_results.png)
