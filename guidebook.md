@@ -31,7 +31,7 @@ When choosing a name for your Spoke, you should keep a few things in mind.
     ![Navigate to Studio](images/003_nav_to_studio.png)
 
 1. Click the **Create Application** button.
-2. Click the **Let's get started button**.
+1. Click the **Let's get started button**.
     ![Getting Started](images/gac_getting_started.png)
 
 1. Fill out the “Create Application” form with the following values:
@@ -40,10 +40,10 @@ When choosing a name for your Spoke, you should keep a few things in mind.
 
     **Scope**: [will be autofilled]
     ![Create New App Form](images/005_new_app_form.png)
-2. Click the **Create** button.
-3. In the subsequent dialog click the **Continue in Studio (Advanced)** link.
+1. Click the **Create** button.
+1. In the subsequent dialog click the **Continue in Studio (Advanced)** link.
     ![Continue in Studio](images/005a_continue_in_studio.png)
-4. Click the **London Transit Spoke** entry to open the new application in Studio.
+1. Click the **London Transit Spoke** entry to open the new application in Studio.
     ![Alt Text](images/006_pick_application.png)
 
 ## Set the Spoke Icon
@@ -51,13 +51,13 @@ When choosing a name for your Spoke, you should keep a few things in mind.
 When building a Spoke, you can set an icon associated with the application. This will be rendered in the Flow Designer UI. For this lab exercise, you are responsible for finding the image of your choosing.
 
 1. Using Google Images or a similar service, find the icon you wish to use.
-2. In Studio, click **File \> Settings**.
+1. In Studio, click **File \> Settings**.
     ![File Settings](images/007_file_settings.png)
-3. Click the **Click to add…** link next to the Logo field.
+1. Click the **Click to add…** link next to the Logo field.
     ![Click to Add Logo](images/008_click_to_add_logo.png)
-4. Click the **Browse…** button and navigate to the image you chose.
+1. Click the **Browse…** button and navigate to the image you chose.
     ![Browse to the Image You Downloaded](images/009_browse_choose_image_file.png)
-5. Click the **OK** button. The image you chose will now be shown.
+1. Click the **OK** button. The image you chose will now be shown.
     ![Click OK](images/010_image_has_been_chosen.png)
 
 # Create your first Action
@@ -80,7 +80,7 @@ This opens a new UI where you will manage and build Actions, Flows and Subflows.
 
     ![Click Action](images/013_new_action.png)
 
-2. Fill out the Action Properties form.
+1. Fill out the Action Properties form.
 
     **Name:** List Line Statuses
 
@@ -90,7 +90,7 @@ This opens a new UI where you will manage and build Actions, Flows and Subflows.
 
     ![Alt Text](images/014_action_description.png)
 
-3. Click the **Submit** button and you will be taken to the new/empty Action.
+1. Click the **Submit** button and you will be taken to the new/empty Action.
 
     ![Alt Text](images/015_new_empty_action.png)
 
@@ -100,11 +100,11 @@ Actions are made up of a series of steps. You will now add a simple Log step to 
 
 1. Click the **Add a new step** button (+).
     ![Alt Text](images/016_add_new_step.png)
-2. A new dialog will open with a list of available action steps. Click the **Log** step to add it to the Action.
+1. A new dialog will open with a list of available action steps. Click the **Log** step to add it to the Action.
     ![Select the Log Step](images/017_select_log_step.png)
-3. Leave the **Log Level** at "Info" and set the **Log Message** field to "Hello, World!".
+1. Leave the **Log Level** at "Info" and set the **Log Message** field to "Hello, World!".
     ![Add the Log Step](images/018_log_step_hello_world.png)
-4. Click the **Save** button on the Action. **Do not** click the Publish button yet. We’ll get to that in a bit.
+1. Click the **Save** button on the Action. **Do not** click the Publish button yet. We’ll get to that in a bit.
 
 # Create a Test Flow
 
@@ -112,7 +112,7 @@ Now that you have an Action, lets put it into a Flow and test it.
 
 1. Click the **+ New** button, and then click **Flow** in the resulting menu.
     ![Alt Text](images/019_create_new_flow.png)
-2. Name the Flow “Test Flow” and click the **Submit** button.
+1. Name the Flow “Test Flow” and click the **Submit** button.
     ![Alt Text](images/020_new_flow_form.png)
 
 ## Add a Trigger
@@ -121,9 +121,9 @@ Flows run when a Trigger condition is met. For this test, we will run a flow on 
 
 1. Click the **Select to add a trigger** button.
     ![Select to Add a Trigger](images/021_select_to_add_trigger.png)
-2. Under the **Date** section, click **Daily**.
+1. Under the **Date** section, click **Daily**.
     ![Select Daily Trigger](images/022_select_daily_trigger.png)
-3. Set to any time and click **Done**.
+1. Set to any time and click **Done**.
     ![Select Daily Trigger](images/023_configure_trigger.png)
 
 ### Enable Draft Actions
@@ -132,9 +132,9 @@ By default, only **Published** actions will show up in Flow Designer. Remember w
 
 1. Click the **More Actions** button (aka the "kebab menu") and click **Configurations**.
     ![Select Configurations](images/024_select_more_actions_configurations.png)
-2. Turn on the **Show draft actions** toggle.
+1. Turn on the **Show draft actions** toggle.
     ![Alt Text](images/025_click_show_draft_actions.png)
-3. Close the **Configurations** dialog.
+1. Close the **Configurations** dialog.
 
 ### Add the Action to the Flow
 
@@ -152,14 +152,13 @@ Now it’s time to add your action to the test flow.
 ### Test the Flow
 
 1. To test the flow, click the **Test** button.
-    ![Click the Test buttom](images/029_click_test_button.png)
-2. A Dialog will open. Click the **Run Test** button.
+    ![Click the Test buttom](images/029_click_test_button.png)1. A Dialog will open. Click the **Run Test** button.
     ![Click Run Test](images/030_configure_test.png)
-3. Click the **Flow has been executed. To view the flow, click here** link.
+1. Click the **Flow has been executed. To view the flow, click here** link.
     ![Click the View Flow Li](images/031_flow_has_been_exec_link.png)
-4. This will open the Execution Details for the test run.
+1. This will open the Execution Details for the test run.
     ![Open Execution Details](images/032_execution_details.png)
-5. Click the **List Line Statuses** action to expand details about the execution of that action. Click the **Logs** and **Steps** section to expand them. Note that the Logs section will show all logs generated by the action. The Steps section will show the list of steps executed inside of the action, and the step configuration details such as design time and run time values.
+1. Click the **List Line Statuses** action to expand details about the execution of that action. Click the **Logs** and **Steps** section to expand them. Note that the Logs section will show all logs generated by the action. The Steps section will show the list of steps executed inside of the action, and the step configuration details such as design time and run time values.
     ![Execution Details Expanded](images/033_execution_details_expanded.png)
 
 # Define Action Inputs
@@ -182,27 +181,27 @@ Action inputs should always have human-friendly names.
 
 1. Click the **Inputs** section at the top of the **Action Outline**.
     ![Click the Input Header](images/034_select_inputs.png)
-2. Click the **Create Input** button.
+1. Click the **Create Input** button.
     ![Create Input](images/035_create_input_button.png)
-3. Click the “variable” label and change the value to “Modes”. Leave the type as **String**. Turn the **Mandatory** toggle on.
+1. Click the “variable” label and change the value to “Modes”. Leave the type as **String**. Turn the **Mandatory** toggle on.
     ![Alt Text](images/036_input_label.png)
-4. Note that there is now a “Modes” pill in the **Input Variables** section of the Data pane.
+1. Note that there is now a “Modes” pill in the **Input Variables** section of the Data pane.
     ![Modes Data Pill is now on screen](images/037_input_in_data_pane.png)
-5. **Save** the Action.
+1. **Save** the Action.
 
 ## Change the Log step to use the input
 
 Now that the action has an input, you will change the Log step to use the value from this input.
 
 1. Open the step named **Log step**.
-2. Add a space after the existing log message, and then *drag* the **Modes** input to the end of the **Log Message** input.
+1. Add a space after the existing log message, and then *drag* the **Modes** input to the end of the **Log Message** input.
     ![Building Log Message with the Data Pill](images/038_build_log_message.png)
-3. **Save** the action.
-4. Click the **Test** button at the top of the Designer page.
+1. **Save** the action.
+1. Click the **Test** button at the top of the Designer page.
  ![The Test Button for the Action](images/038a_test_button.png)
-5. Fill in a value to the **Modes** field and click **Run Test**.
+1. Fill in a value to the **Modes** field and click **Run Test**.
     ![Add Input to the Test](images/038b_test_action_form.png)
-6. Follow the Execution Results link as before. Examine the results of the individual steps and verify that you see your input correctly logged.
+1. Follow the Execution Results link as before. Examine the results of the individual steps and verify that you see your input correctly logged.
     ![Results of the Test](images/039_test_results.png)
 
 # The REST Step
@@ -213,9 +212,9 @@ In this exercise, we will use the REST step. The REST step is exclusive to Integ
 
 1. Click the + button underneath the Log step you added earlier.
     ![Add the REST Step](images/040_add_rest_step.png)
-2. Click the REST step in the **Integrations** section of the dialog.
+1. Click the REST step in the **Integrations** section of the dialog.
     ![Select the REST Step](images/041_select_rest_step.png)
-3. You will be presented with the REST step UI.
+1. You will be presented with the REST step UI.
     ![Define the REST Step](images/042_rest_step_ui.png)
 
 ### Define Connection Information
@@ -223,12 +222,12 @@ In this exercise, we will use the REST step. The REST step is exclusive to Integ
 When configuring an REST step, there are two options for defining the endpoint you will connect to:
 
 1. Use Connection Alias
-2. Define Connection Inline
+1. Define Connection Inline
 
 Whenever possible, you should use a Connection Alias when designing your step. There are two primary reasons to define connections inline:
 
 1. Quick prototyping/testing.
-2. When connection info is dynamic and will be passed into the action as an input or otherwise dynamically determined (e.g. the REST step will connect to an address defined in a Configuration Item record passed into the flow).
+1. When connection info is dynamic and will be passed into the action as an input or otherwise dynamically determined (e.g. the REST step will connect to an address defined in a Configuration Item record passed into the flow).
 
 **Note**: Although the London Transport API needs no login, that is a rare case. In practice, almost every integration will require a Connection Alias.
 
@@ -288,21 +287,21 @@ There’s another problem with the action you just built. You hard-coded the con
 ## Create a Connection Alias
 
 In this section, you will create a Connection Alias to be used by all of the actions in your spoke.
+
 1. For easy access to scopes and update sets, click on the **Settings** icon in the banner, switch to the _Developer_ pane, and activate both **Show application picker in header** and **Show update set picker in header**.
     ![edit user properties](Images/edit_user_properties.png)
 1. Make sure the correct application is active.
     ![Alt Text](images/048_verify_active_application.png)
-2. Navigate to **Connections & Credentials \> Connection & Credential Aliases**.
-3. Click **New**.
+1. Navigate to **Connections & Credentials \> Connection & Credential Aliases**.
+1. Click **New**.
 
     ![Alt Text](images/049_new_connection_alias.png)
-
-4. Set the following fields:
+1. Set the following fields:
     - **Name**: CC20_London_Transit
     - **Type**: Connection & Credential
     - **Connection type**: HTTP
     ![Alt Text](images/050_connection_alias_form.png)
-5. Right click the header and click the **Save** button to save the Connection Alias.
+1. Right click the header and click the **Save** button to save the Connection Alias.
 
     ![Alt Text](images/051_right_click_save_alias.png)
 
@@ -313,11 +312,11 @@ In addition to the core properties that can be defined in a connection (e.g. end
 ### Define a Connection Attribute
 
 1. Make sure the Connection Alias you just created is open.
-2. Select the **Connection Attributes** tab and click the **New** button.
+1. Select the **Connection Attributes** tab and click the **New** button.
 
     ![Alt Text](images/052_new_attribute.png)
 
-3. Set the following field values:
+1. Set the following field values:
 
     **Type:** String
 
@@ -328,7 +327,7 @@ In addition to the core properties that can be defined in a connection (e.g. end
     **Max length:** 10
 
     ![Alt Text](images/053_new_attribute_form.png)
-4. Click the **Submit** button.
+1. Click the **Submit** button.
 
 ## Create a Connection
 
@@ -345,12 +344,12 @@ The API in this lab does not require  authentication for most endpoints although
 
     `https://api.tfl.gov.uk`
 
-2. Under the **Attributes** section, set the **Version** to the "1".
-3. The form should look something like this:
+1. Under the **Attributes** section, set the **Version** to the "1".
+1. The form should look something like this:
 
     ![Alt Text](images/055_new_connection_form.png)
 
-4. Click the **Submit** button to create the connection.
+1. Click the **Submit** button to create the connection.
 
 ### Update the REST Step to Use the Alias
 
@@ -381,12 +380,12 @@ Script Steps give you access to the full power of the ServiceNow platform. You c
 The script step gets its own set of input variables. This allows you to map data from the data pane into script-friendly variables.
 
 1. In the **Input Variables** widget, click the **+ Create Variable** button.
-2. Set the **Name** to `responseBody`.
-3. Drag the **Response Body** data pill from the data pane to the **Value** field. You can now reference the Response Body in your script as `inputs.responseBody`.
+1. Set the **Name** to `responseBody`.
+1. Drag the **Response Body** data pill from the data pane to the **Value** field. You can now reference the Response Body in your script as `inputs.responseBody`.
 
     ![Alt Text](images/060_response_body_script_input.png)
 
-4. Set the script to:
+1. Set the script to:
 
 ```javascript
 (function execute(inputs, outputs) {
@@ -433,26 +432,26 @@ The same naming considerations we used for Action Inputs also apply to Action Ou
 **BAD**: score.
 
 ![Action Output](images/action_outline_outputs.png)
+
 1. Click the **Outputs** section in the **Action Outline**.
-2. Click the **+ Create Output** button.
-3. Set the **Label** to “Statuses”. Do not fill out the complex object. Click the **Exit Edit Mode** button.
+1. Click the **+ Create Output** button.
+1. Set the **Label** to “Statuses”. Do not fill out the complex object. Click the **Exit Edit Mode** button.
 
     ![Alt Text](images/060a_create_action_output.png)
-4. Using the Data Pill Picker, set the **Value** to the statuses Script Output Variable.
+1. Using the Data Pill Picker, set the **Value** to the statuses Script Output Variable.
 
     ![Alt Text](images/061_outputs.png)
-5. Click the **Edit Outputs** button again to verify the complex object output was automatically created.
+1. Click the **Edit Outputs** button again to verify the complex object output was automatically created.
     ![Alt Text](images/061a_create_complex_object_output.png)
 
-6. **Save** the Action.
+1. **Save** the Action.
 
 ## Use the Output
 
 Now that the action is returning the score, you can use it in the Flow. Make the following modifications to the test flow you created.
 
 1. Change the **Modes** input on the List Line Statuses action to use the text "tube".
-2. Add a **Log** action. For the **Message** use the Statuses data pill that was created for the List Line Statuses action.
-
+1. Add a **Log** action. For the **Message** use the Statuses data pill that was created for the List Line Statuses action.
 
 At this point, your flow should look something like this.
 
@@ -489,18 +488,18 @@ When integrating to external systems with IntegrationHub, OpenAPI can be a great
 With the REST step created, now you will configure the parsing of the return value.
 
 1. Under the REST Step, delete all of the **Accept** header entries except for **text/xml** by clicking the trash can icons to the right.
-2. Input the Connection Alias created ealier in the **Connection Alias** field.
-3. Click the existing **Log** step. Delete the value in the **Log Message** field. From the right side, drag the Data Pill named **Response Body** and drop it in the **Log Message** field.
+1. Input the Connection Alias created ealier in the **Connection Alias** field.
+1. Click the existing **Log** step. Delete the value in the **Log Message** field. From the right side, drag the Data Pill named **Response Body** and drop it in the **Log Message** field.
    ![Add Response Body to Log Message](images/032f_configure_log_message.png)
-4. Click the **Test**  button. Click the link to open the execution details. Expand the **Steps** section and scroll to the bottom.
+1. Click the **Test**  button. Click the link to open the execution details. Expand the **Steps** section and scroll to the bottom.
    ![Find the Results of the Log Step](images/032g_log_results.png)
-5. Click the XML text on the right under **Runtime Values**. This will open a dialog viewer that shows the full response body. Select it and either keep on your clipboard or paste somewhere for safe keeping.
+1. Click the XML text on the right under **Runtime Values**. This will open a dialog viewer that shows the full response body. Select it and either keep on your clipboard or paste somewhere for safe keeping.
    ![Open ](images/032h_xml_payload.png)
-6. Add a step below the **Log** step by click the **+* icon below it. Choose the **XML Parser** step.
+1. Add a step below the **Log** step by click the **+* icon below it. Choose the **XML Parser** step.
    ![Add XML Parser Step](images/032i_add_xml_parser_step.png)
-7. Paste the XML into the field under **Payload View** then click **Generate Target**.
+1. Paste the XML into the field under **Payload View** then click **Generate Target**.
    ![Generate Target](images/032j_generate_target.png)
-8. You will now see the structure of the pasted XML payload represented as a complex object. Drag the Data Pill for **Response Body** and drop it into **Source Data** field on the left.
+1. You will now see the structure of the pasted XML payload represented as a complex object. Drag the Data Pill for **Response Body** and drop it into **Source Data** field on the left.
    ![Generated Target Configured for Data](images/032k_generated_target.png)
 
 ## Connect to Action Output
