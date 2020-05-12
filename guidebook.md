@@ -408,7 +408,7 @@ The script step gets its own set of input variables. This allows you to map data
 
 ## Script Output Variables
 
-You may notice that the script is setting something you haven’t yet defined: `outputs.score`.
+You may notice that the script is setting something you haven’t yet defined: `outputs.statuses`.
 
 Similar to Script Input Variables, Script Output Variables allow you to pass data out of your script to other steps in the action. These variables are internal to the action, and are not surfaced in Flow Designer.
 
