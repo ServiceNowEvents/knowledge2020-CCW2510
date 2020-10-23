@@ -397,7 +397,7 @@ The script step gets its own set of input variables. This allows you to map data
       status.name =  parsingStatus.name.toString();
       if (parsingStatus.lineStatuses.length > 0) {
           status.description = parsingStatus.lineStatuses[0].statusSeverityDescription.toString();
-          status.reason = parsingStatus.lineStatuses[0].reason.toString();
+          //status.reason = parsingStatus.lineStatuses[0].reason.toString();
       }
       statuses.push(status);
     }
